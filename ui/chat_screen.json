@@ -2,15 +2,11 @@
   "namespace": "chat",
 
   "copy_mode@settings_common.option_toggle_control": {
-    "$toggle_state_binding_name": "",
-    "$option_binding_name": "",
-    "$toggle_name": ""
+    "$toggle_state_binding_name": "#chat_copy_mode",
+    "$option_binding_name": "#chat_copy_mode",
+    "$toggle_name": "#chat_copy_mode"
   },
   
-  "copy_mode_toggle@settings_common.option_toggle": {
-    "$control_name": "chat.copy_mode"
-  },
-
   "chat_message_content": {
     "type": "stack_panel",
     "size": [ "100%", "100%c" ],
@@ -30,7 +26,7 @@
       {
         "chat_message_copy": {
           "type": "edit_box",
-          "size": [ "100%", 20 ],
+          "size": [ "100%", "100%c" ],
           "max_length": 32767,
 
           "focus_enabled": true,
@@ -40,11 +36,7 @@
           "always_listening": false,
           "text_type": "EntendedASCII",
           "text_box_name": "chat_copy_npx",
-          "hover_control": "hover",
-          "pressed_control": "pressed",
           "text_control": "text_panel",
-          "virtual_keyboard_buffer_control": "",
-          "place_holder_control": "empty_panel",
           "bindings": [
             {
               "binding_type": "view",
@@ -55,41 +47,20 @@
           ],
           "controls": [
             {
-              "back": {
-                "type": "image",
-                "size": [ "100%", "100%" ],
-                "texture": "textures/ui/White",
-                "color": [ 0, 0, 0 ],
-                "alpha": 0.8
-              }
-            },
-            {
-              "hover": {
-                "type": "image",
-                "size": [ "100%", "100%" ],
-                "layer": 4,
-                "texture": "textures/ui/focus_border_white"
-              }
-            },
-            {
-              "pressed": {
-                "type": "image",
-                "size": [ "100%", "100%" ],
-                "layer": 4,
-                "texture": "textures/ui/focus_border_white"
-              }
-            },
-            {
               "text_panel": {
                 "type": "label",
-                "size": [ "100% - 4px", 10 ],
-                "anchor_from": "right_middle",
-                "anchor_to": "right_middle",
+                "size": [ "100%", "default" ],
+                "layer": 5,
+
+                "text": "#item_name",
                 "localize": false,
                 "enable_profanity_filter": false,
-                "color": [ 1, 1, 1 ],
-                "text": "#item_name",
-                "layer": 5,
+
+                "color": "$chat_text_color",
+                "font_type": "$chat_font_type",
+                "font_scale_factor": "$chat_font_scale_factor",
+                "line_padding": "$chat_line_spacing",
+                
                 "$text_box_name": "chat_copy_npx",
                 "property_bag": {
                   "#property_field": "#item_name"
@@ -109,9 +80,6 @@
                   }
                 ]
               }
-            },
-            {
-              "empty_panel@common.empty_panel": {}
             }
           ],
           "button_mappings": [
@@ -201,9 +169,9 @@
                       {
                         "label": {
                           "type": "label",
-                          "size": [ 200, 8 ],
+                          "size": [ 200, 10 ],
                           "offset": [ -53, 2 ],
-                          "text": "edu.worlds_screen.copy",
+                          "text": "gotemba.chatTextCopy.copy",
                           "color": "$title_text_color",
                           "layer": 20,
                           "text_alignment": "right"
@@ -219,13 +187,94 @@
                           "anchor_to": "bottom_left",
                           "controls": [
                             {
-                              "hide_toggle@chat.copy_mode_toggle": {
+                              "copy_toggle@settings_common.option_toggle": {
+                                "$control_name": "chat.copy_mode",
                                 "layer": 20,
                                 "size": [ 32, "100%c" ],
                                 "offset": [ 165, 0 ]
                               }
                             }
                           ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "copy_mode_text": {
+              "type": "image",
+              "texture": "textures/ui/White",
+              "anchor_from": "top_right",
+              "anchor_to": "top_right",
+              "size": [ "100%c", 16 ],
+              "offset": [ 0, 23 ],
+              "color": [ 0.192, 0.196, 0.2 ],
+              "layer": 5,
+              "bindings": [
+                {
+                  "binding_type": "view",
+                  "source_control_name": "chat.copy_mode",
+                  "source_property_name": "#toggle_state",
+                  "target_property_name": "#visible"
+                }
+              ],
+              "controls": [
+                {
+                  "stack": {
+                    "type": "stack_panel",
+                    "orientation": "horizontal",
+                    "size": [ "100%c", 14 ],
+                    "layer": 1,
+                    "controls": [
+                      {
+                        "padding_1": {
+                          "type": "panel",
+                          "size": [ 2, 0 ]
+                        }
+                      },
+                      {
+                        "infobulb_panel": {
+                          "type": "panel",
+                          "size": [ "100%c", "100%" ],
+                          "controls": [
+                            {
+                              "infobulb": {
+                                "type": "image",
+                                "texture": "textures/ui/infobulb_darkborder_small",
+                                "size": [ 7, 9 ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "padding_2": {
+                          "type": "panel",
+                          "size": [ 2, 0 ]
+                        }
+                      },
+                      {
+                        "text_panel": {
+                          "type": "panel",
+                          "size": [ "100%c", "100%" ],
+                          "controls": [
+                            {
+                              "text": {
+                                "type": "label",
+                                "text": "gotemba.chatTextCopy.copyMode",
+                                "size": [ "default", 10 ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "padding_3": {
+                          "type": "panel",
+                          "size": [ 2, 0 ]
                         }
                       }
                     ]

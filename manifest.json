@@ -1,18 +1,17 @@
 {
   "format_version": 2,
   "header": {
-    "name": "Chat Text Copy",
-    "description": "チャットの文章を簡単にコピペできます\nby YukaYama0311",
-    "version": [ 1, 0, 0 ],
+    "name": "Chat Text Copy v1.1.0",
+    "description": "チャットの文をかんたんにコピペできます！\nby Yuka0813",
     "uuid": "d702eff3-f530-4567-9231-b781e2b7dbfe",
+    "version": [ 1, 1, 0 ],
     "min_engine_version": [ 1, 13, 0 ]
   },
   "modules": [
     {
       "type": "resources",
-      "description": "",
-      "version": [ 1, 0, 0 ],
-      "uuid": "b020023e-35be-42d8-82ea-fd82997290a5"
+      "uuid": "b020023e-35be-42d8-82ea-fd82997290a5",
+      "version": [ 1, 1, 0 ]
     }
   ]
 }
